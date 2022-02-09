@@ -5,17 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Laba8"
         mc:Ignorable="d"
-        Title="MainWindow" Height="317" Width="624">
+        Title="MainWindow" Height="270" Width="624">
     <Canvas>
-        <Slider Canvas.Left="39" Canvas.Top="44" Width="546" Height="18"/>
-        <Slider Canvas.Left="39" Canvas.Top="108" Width="546" Height="18"/>
-        <Slider Canvas.Left="39" Canvas.Top="171" Width="546" Height="18"/>
-        <Button Name="StartButton" Content="Старт" Canvas.Left="39" Canvas.Top="249" Height="29" Width="111"/>
-        <Button Name="StopButton" Content="Стоп" Canvas.Left="257" Canvas.Top="249" Height="29" Width="111"/>
-        <Button Name="OpenFileButton" Content="Открыть файл" Canvas.Left="474" Canvas.Top="249" Height="29" Width="111"/>
+        <Slider Name="VolumeSlider" Minimum="0" Maximum="10" Canvas.Left="39" Canvas.Top="44" Width="546" Height="18" IsSnapToTickEnabled="True" TickFrequency="1"/>
+        <Slider Name="SpeedSlider" Minimum="0" Maximum="2000" Canvas.Left="42" Canvas.Top="116" Width="546" Height="22" IsSnapToTickEnabled="True" TickFrequency="100"/>
+        <Button Name="StartButton" Content="Старт" Canvas.Left="44" Canvas.Top="166" Height="29" Width="111"/>
+        <Button Name="StopButton" Content="Стоп" Canvas.Left="337" Canvas.Top="166" Height="29" Width="111"/>
+        <Button Name="OpenFileButton" Content="Открыть файл" Canvas.Left="479" Canvas.Top="166" Height="29" Width="111"/>
         <Label Content="Громкость" Canvas.Left="39" Canvas.Top="13"/>
-        <Label Content="Баланс (что?)" Canvas.Left="39" Canvas.Top="77"/>
-        <Label Content="Скорость" Canvas.Left="39" Canvas.Top="145"/>
+        <Label Content="Скорость" Canvas.Left="42" Canvas.Top="90"/>
+        <Button Name="PauseButton" Content="Пауза" Canvas.Left="191" Canvas.Top="166" Height="29" Width="111"/>
 
     </Canvas>
 </Window>
