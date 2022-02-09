@@ -10,20 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Task1
+namespace Lab7
 {
     /// <summary>
     /// Interaction logic for SelectFillingPage.xaml
     /// </summary>
-    public partial class SelectFillingPage : Page
+    public partial class SelectFillingWindow : Window
     {
-        private readonly List<PizzaFilling> avaliblePizzaFillings = new List<PizzaFilling>();
-        private readonly List<PizzaFilling> settedPizzaFillings = new List<PizzaFilling>();
+        public List<PizzaFilling> AvaliblePizzaFillings { get; set; } = new List<PizzaFilling>();
+        public List<PizzaFilling> SettedPizzaFillings { get; set; } = new List<PizzaFilling>();
 
-        public SelectFillingPage(List<PizzaFilling> selectedPizzaFillings)
+        public SelectFillingWindow(List<PizzaFilling> selectedPizzaFillings)
         {
             InitializeComponent();
 
@@ -32,15 +31,18 @@ namespace Task1
                     selectedPizzaFillings.Any(seleceted => seleceted.Name == item.Name)
                 );
 
-            this.avaliblePizzaFillings = avaliblePizzaFillings;
-            this.settedPizzaFillings = selectedPizzaFillings;
+            this.AvaliblePizzaFillings = avaliblePizzaFillings;
+            this.SettedPizzaFillings = selectedPizzaFillings;
             SyncListsWithView();
         }
 
         private void SyncListsWithView()
         {
-            avalivableFillingsListView.ItemsSource = avaliblePizzaFillings;
-            settedFillingsListView.ItemsSource = settedPizzaFillings;
+            avalivableFillingsListView.ItemsSource = null;
+            settedFillingsListView.ItemsSource = null;
+
+            avalivableFillingsListView.ItemsSource = AvaliblePizzaFillings;
+            settedFillingsListView.ItemsSource = SettedPizzaFillings;
         }
 
         private void addFilling_Click(object sender, RoutedEventArgs e)
@@ -48,9 +50,9 @@ namespace Task1
             if (avalivableFillingsListView.SelectedItem == null)
                 return;
 
-            var item = settedFillingsListView.SelectedItem as PizzaFilling;
-            settedPizzaFillings.Remove(item);
-            avaliblePizzaFillings.Add(item);
+            var items = avalivableFillingsListView.SelectedItems.Cast<PizzaFilling>();
+            SettedPizzaFillings.AddRange(items);
+            AvaliblePizzaFillings.RemoveAll(item => items.Contains(item));
             SyncListsWithView();
         }
 
@@ -59,15 +61,16 @@ namespace Task1
             if (settedFillingsListView.SelectedItem == null)
                 return;
 
-            var item = settedFillingsListView.SelectedItem as PizzaFilling;
-            settedPizzaFillings.Add(item);
-            avaliblePizzaFillings.Remove(item);
+            var items = settedFillingsListView.SelectedItems.Cast<PizzaFilling>();
+            AvaliblePizzaFillings.AddRange(items);
+            SettedPizzaFillings.RemoveAll(item => items.Contains(item));
             SyncListsWithView();
         }
 
         private void addAllSelectedFillingsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            DialogResult = true;
+            Close();
         }
     }
 }

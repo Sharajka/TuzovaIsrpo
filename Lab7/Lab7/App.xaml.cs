@@ -5,10 +5,9 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Navigation;
 
-namespace Lab777
-{ 
+namespace Lab7
+{
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

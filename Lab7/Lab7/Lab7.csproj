@@ -4,26 +4,19 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4F1FA7D7-744C-45B8-A45E-93F0BE3E4679}</ProjectGuid>
+    <ProjectGuid>{7C9EB131-972D-440B-A9BE-0C27B0840F05}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Lab777</RootNamespace>
-    <AssemblyName>Lab777</AssemblyName>
+    <RootNamespace>Lab7</RootNamespace>
+    <AssemblyName>Lab7</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <EnableSecurityDebugging>true</EnableSecurityDebugging>
-    <Install>False</Install>
-    <StartAction>URL</StartAction>
-    <HostInBrowser>true</HostInBrowser>
-    <BootstrapperEnabled>false</BootstrapperEnabled>
-    <TargetZone>Internet</TargetZone>
-    <GenerateManifests>true</GenerateManifests>
-    <SignManifests>True</SignManifests>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -33,6 +26,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -59,11 +53,13 @@
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SelectFillingPage.xaml.cs">
-      <DependentUpon>SelectFillingPage.xaml</DependentUpon>
+    <Compile Include="PizzaFilling.cs" />
+    <Compile Include="SelectFillingWindow.xaml.cs">
+      <DependentUpon>SelectFillingWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Page1.xaml">
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -71,17 +67,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SelectFillingPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="SelectFillingWindow.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PizzaFilling.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -99,21 +94,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Lab777_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Properties\app.manifest" />
   </ItemGroup>
-  <PropertyGroup>
-    <StartArguments />
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>Lab777_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestCertificateThumbprint>0FC4ABA0FC0CA11FFF88E3A3EE15F9D265ACC44F</ManifestCertificateThumbprint>
-  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
