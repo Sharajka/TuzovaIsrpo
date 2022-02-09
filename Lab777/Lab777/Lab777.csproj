@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{495A371C-20D7-4041-82BE-5DEAA896AB0D}</ProjectGuid>
+    <ProjectGuid>{4F1FA7D7-744C-45B8-A45E-93F0BE3E4679}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Task1</RootNamespace>
-    <AssemblyName>Task1</AssemblyName>
+    <RootNamespace>Lab777</RootNamespace>
+    <AssemblyName>Lab777</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -60,7 +60,6 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Compile Include="PizzaFilling.cs" />
     <Compile Include="SelectFillingPage.xaml.cs">
       <DependentUpon>SelectFillingPage.xaml</DependentUpon>
     </Compile>
@@ -77,11 +76,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="SelectFillingPage.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PizzaFilling.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -99,21 +99,21 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Lab777_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Properties\app.manifest" />
-    <None Include="Task1_TemporaryKey.pfx" />
   </ItemGroup>
   <PropertyGroup>
     <StartArguments />
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Task1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>Lab777_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>94D2FE17D5122DD8C5839C9D059C6E0FBD7A4FC5</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>0FC4ABA0FC0CA11FFF88E3A3EE15F9D265ACC44F</ManifestCertificateThumbprint>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

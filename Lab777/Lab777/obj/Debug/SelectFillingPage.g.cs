@@ -92,7 +92,7 @@ namespace Task1 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Task1;component/selectfillingpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Lab777;component/selectfillingpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\SelectFillingPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

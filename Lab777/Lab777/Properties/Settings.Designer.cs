@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Task1.Properties
+namespace Lab777.Properties
 {
     
     

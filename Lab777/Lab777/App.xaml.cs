@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Navigation;
 
-namespace Task1
+namespace Lab777
 { 
     /// <summary>
     /// Interaction logic for App.xaml
