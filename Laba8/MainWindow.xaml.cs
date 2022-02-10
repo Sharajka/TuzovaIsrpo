@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Net.NetworkInformation;
@@ -14,32 +15,63 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace Laba8
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        [DllImport("winmm.dll")]
-        static extern uint mciSendString(string command, StringBuilder returnString, int uReturnLength, IntPtr hWndCallback);
+        private const string PathToChelovekYaitsa = "../../egg.mp3";
 
+        private Sound _sound;
 
         public MainWindow()
         {
             InitializeComponent();
+            RollbackToYaitsa();
 
+            Closing += (sender, e) => ClearSound();
 
-            StartButton.Click += (sender, e) =>
+            StartButton.Click += (sender, e) => _sound.Play();
+            StopButton.Click += (sender, e) => _sound.Stop();
+            PauseButton.Click += (sender, e) => _sound.Pause();
+
+            VolumeSlider.ValueChanged += (sender, e) 
+                => Sound.SetAppVolume(Convert.ToUInt32(e.NewValue));
+
+            SpeedSlider.ValueChanged += (sender, e) 
+                => _sound.SetSpeed(Convert.ToUInt32(e.NewValue));
+
+            OpenFileButton.Click += (sender, e) =>
             {
-                var path = System.IO.Path.GetFullPath("../../egg.mp3");
+                try
+                {
+                    var dialog = new OpenFileDialog();
 
-                mciSendString($"open {path} type mpegvideo alias MediaFile", null, 0, IntPtr.Zero);
-                mciSendString($"play {path} from 0", null, 0, IntPtr.Zero);
+                    if (dialog.ShowDialog(this) != true) 
+                        return;
+
+                    ClearSound();
+                    _sound = new Sound(dialog.FileName);
+
+                }
+                catch
+                {
+                    RollbackToYaitsa();
+                }
             };
-            
+        }
+
+        private void RollbackToYaitsa()
+        {
+            ClearSound();
+            _sound = new Sound(Path.GetFullPath(PathToChelovekYaitsa));
+        }
+
+        private void ClearSound()
+        {
+            _sound?.Dispose();
+            _sound = null;
         }
     }
 }
